@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Objects</title>
+</head>
+<style>
+    body {
+       margin: 0;
+       font-family: Arial, sans-serif;
+       background-color: #121212;
+       color: #f0f0f0;
+       color: #f0f0f0;
+       display: flex;
+       justify-content: center;
+       align-items: center;
+       height: 100vh;
+       
+   }
+
+   .banner {
+       background-color: #1f1f1f;
+       color: #ffffff;
+       padding: 20px;
+       text-align: center;
+       border-bottom: 4px solid #004586;
+       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.6);   
+       
+   }
+
+   .banner h1 {
+       margin: 0;
+       font-size: 2.5em;
+       font-weight: bold;
+   }
+
+   .banner p {
+       margin: 10px 0 0;
+       font-size: 1.2em;
+       color: #d0d0d0;
+   }
+
+   .btn {
+       background-color: #ff4081;
+       color: white;
+       padding: 10px 20px;
+       border: none;
+       border-radius: 5px;
+       cursor: pointer;
+       margin-top: 20px;
+       text-decoration: none;
+   }
+
+   .btn:hover {
+       background-color: #e91e63;
+   }
+</style>
+
+<body>
+
+    <div class="banner">
+        <h1>Welcome to My GitHub</h1>
+        <p>Check out Javascript Objects and code snippets.</p>
+        
+    </div>
+
+    <script>
+        //crating objects
+        const obj = {
+            id: 1, name: "john"
+        }
+
+        const obj2 = new Object();
+        obj2.id = 2;
+        obj2.name = "john"
+        obj2.id = 3;
+        obj2.name = "dev"
+        console.log(obj);
+        console.log(obj2);
+
+        //delets name property
+        // delete obj2.name
+
+        //object loops
+        for (let key in obj) {
+            console.log(key);     //properties accessing
+            console.log(key + " " + obj[key]);  //values accessing  
+        }
+
+        const car = {
+            make: "Tesla",
+            model: "Model 3",
+            year: 2021,
+            color: "Red"
+        };
+
+        for (let key in car) {
+            console.log(`${key}: ${car[key]}`);
+        }
+
+
+        console.log(Object.keys(car));   //return properties array
+        console.log(Object.values(car));  //return values array
+
+        let keyArray = Object.keys(car);
+        console.log(keyArray[0]);
+        for (const element of keyArray) {    //iterating array using for of loop
+            console.log(element);
+        }
+
+        keyArray.forEach((key) => {
+            console.log(key);               //logs keys
+
+        })
+
+        let valueArray = Object.values(car)
+        valueArray.forEach((value) => {
+            console.log(value);             //logs values from array
+        })
+
+        const entriesArry = Object.entries(car)    //returns pair of key and value in array
+        console.log(entriesArry[1]);
+        entriesArry.forEach(([key, value]) => {       //it returns array
+            //in array child arrays we can access
+            console.log(`${key} ${value}`);
+        })
+
+        for (const [key, value] of entriesArry) {
+            console.log(`${key} ${value}`);
+        }
+
+        const newcar = Object.assign({}, car);
+        console.log(newcar);
+
+
+        Object.freeze(car);
+        car.year = 25; // Won’t work, because the object is frozen
+        console.log(car.year); // Output: 2021
+
+        Object.seal(car);
+        car.year = 2024; // This works
+        delete car.make; // This won’t work
+
+       
+
+        //using maps
+
+        const mapArray=entriesArry.map(([key,value])=>{
+          return `${key.toUpperCase()}: ${value.toString().toUpperCase()}`
+        }  )
+        console.log(mapArray);
+        
+
+
+    </script>
+</body>
+
+</html>
